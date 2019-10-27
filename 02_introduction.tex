@@ -1,6 +1,15 @@
 \chapter{Introduction}
 \label{chap:introduction}
-The ISO C++ Standard defines three floating-point types to be used for the representation of real numbers: \code{float}, \code{double}, and \code{long double}. However, the standard does not specify the storage size or binary representation used for these types. This ambiguity creates difficulties when a developer wishes to serialize floating-point values using a binary format that allows them to be successfully de-serialized on a variety of other systems.
+
+Personal computers have been developed to a point where those unfamiliar with Computer Science Theory might conclude there is nothing computers cannot do.
+While this is an understandable conclusion, it has been proven that there is a limit to the types of computation our "classical computers" can perform [@linz, p.299].
+In the last few decades, however, the field of quantum mechanics and quantum computing have advanced to the point where primitive operations are now possible in the quantum sphere.
+This breakthrough will change the way information is stored, secured, and created.
+One such development was the BB84 quantum key distribution protocol.
+
+There are many encryption protocols in use today, each of which provide their own various security measures.
+The BB84 protocol allows two parties to co-generate an encryption key that can be used as a one-time-pad and discarded after use.
+Throughout the process, the protocol gives a number of guarantees to the 
 
 The most commonly used standard for floating-point values is the IEEE-754 Standard for Binary Floating-Point. However, this standard does not strictly define all aspects of its implementation. This means that even when the IEEE-754 standard is used, floating-point values can not be reliably serialized on one system that implements the standard and de-serialized on a different system implementing the same standard. Attempting to serialize values on an IEEE-754 system and de-serialize them on a non IEEE-754 (or the inverse) presents a more significant challenge.
 
