@@ -2,27 +2,23 @@
 \label{chap:introduction}
 
 Personal computers have been developed to a point where those unfamiliar with Computer Science Theory might conclude there is nothing computers cannot do.
-While this is an understandable conclusion, it has been proven that there is a limit to the types of computation our "classical computers" can perform [@linz, p.299].
+While this is an understandable conclusion, it has been proven that there is a limit to the types of computation our "classical computers" can perform \cite{linz}.
 In the last few decades, however, the field of quantum mechanics and quantum computing have advanced to the point where primitive operations are now possible in the quantum sphere.
 This breakthrough will change the way information is stored, secured, and created.
 One such development was the BB84 quantum key distribution protocol.
 
-There are many encryption protocols in use today, each of which provide their own various security measures.
+There are many encryption protocols in use today, such as the Diffe-Hellman key exchange protocol (KEP), each of which provide their own various security measures.
 The BB84 protocol allows two parties to co-generate an encryption key that can be used as a one-time-pad and discarded after use.
-Throughout the process, the protocol gives a number of guarantees to the 
+Throughout the process of key generation, the protocol gives a number of guarantees regarding eavesdropping and malicious acts to both parties \cite{qcftgu}.
+This thesis presents a Python library that supports a peer to peer simulation of the BB84 quantum Quantum KEP, as well as serves as an intruduction to programming in the quantum computing paradigm.
 
-The most commonly used standard for floating-point values is the IEEE-754 Standard for Binary Floating-Point. However, this standard does not strictly define all aspects of its implementation. This means that even when the IEEE-754 standard is used, floating-point values can not be reliably serialized on one system that implements the standard and de-serialized on a different system implementing the same standard. Attempting to serialize values on an IEEE-754 system and de-serialize them on a non IEEE-754 (or the inverse) presents a more significant challenge.
 
-This thesis presents a framework that may be used to serialize floating-point values to a standardized format and de-serialize those values on a variety of platforms. Developers using this framework must still implement appropriate code to convert the framework's floating-point format to that of the systems that they are using. Though perhaps less than ideal, this represents a substantial improvement over the current situation in which a developer is required to deal with floating-point data that is in an ambiguous or even unknown format.
+Chapter~\ref{chap:background} of the thesis provides background information on encryption protocols, the quantum computation paradigm, and other background information related to the BB84 protocol. 
 
-Chapter~\ref{chap:background} of the thesis provides background information related to the implementation of floating-point in C++, as well as details related to the IEEE-754 standard and the format that it uses for the representation of floating-point values. Also discussed is the Boost Serialization Library, used by this thesis to provide the serialization backbone upon which the floating-point framework is implemented.
+Chapter~\ref{chap:bb84} details the BB84 protocol in its steps, as well as discusses the guarantees the protocol provides the user.
 
-Chapter~\ref{chap:challenges} provides additional detail regarding the challenges that must be addressed in order to serialize floating-point values successfully.
+Chapter~\ref{chap:implementation} describes the library.
+This describes not only the documentation for the library but also how it can be used.
 
-Chapter~\ref{chap:framework} describes the proposed framework, the utilities provided to assist in using the framework, and demonstrates the usage of the framework.
+Chapter~\ref{chap:conclusion} summarizes this simulator and its potential applications, as well as discussing possible future work to improve upon it.
 
-Chapter~\ref{chap:testing} discusses the testing that was done to verify the functionality of the framework utilities as well as the viability of the framework itself.
-
-Chapter~\ref{chap:conclusion} summarizes this framework and its potential applications, as well as discussing possible future work to improve upon the framework.
-
-Appendix~\ref{app:features} provides a listing of reports that detail the floating-point features of the systems used during testing.
