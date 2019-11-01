@@ -91,9 +91,9 @@
         \makecopyright
         %\input{01_abstract.tex}
 		\tableofcontents
-        \listoftables
-        \listoffigures
-        \lstlistoflistings
+        %\listoftables
+        %\listoffigures
+        %\cite{qc:agi}\cite{simulaqron}\cite{linz}\lstlistoflistings
 	\end{preliminary}
 
 	\newlinestretch{2}
@@ -102,19 +102,13 @@
 	    \input{02_introduction.tex}
 	    \input{03_background.tex}
 	    \input{04_bb84.tex}
-      \input{./05_implementation.tex}
-      \input{06_conclusion.tex}
+      	\input{05_implementation.tex}
+        \input{06_conclusion.tex}
 		\end{doublespace}
 
 	\newpage
     \newlinestretch{1}
-	\addcontentsline{toc}{chapter}{Bibliography}
+	\addcontentsline{toc}{chapter}{bibliography}
+	\bibliography{bibliography} 
     \bibliographystyle{plain}
-	\bibliography{bibliography}
-    \nocite{*}
-    \begin{appendices}
-      \begin{singlespace}
-        \input{0a_appendix_platforms.tex}
-      \end{singlespace}    
-    \end{appendices}
 \end{document}

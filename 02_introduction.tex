@@ -1,17 +1,37 @@
 \chapter{Introduction}
 \label{chap:introduction}
 
-Personal computers have been developed to a point where those unfamiliar with Computer Science Theory might conclude there is nothing computers cannot do.
-While this is an understandable conclusion, it has been proven that there is a limit to the types of computation our "classical computers" can perform \cite{linz}.
-In the last few decades, however, the field of quantum mechanics and quantum computing have advanced to the point where primitive operations are now possible in the quantum sphere.
-This breakthrough will change the way information is stored, secured, and created.
+% Establish a presidence 
+Personal computers have been developed to a point where those unfamiliar with computer science theory might conclude there is nothing computers cannot do.
+While this is an understandable conclusion, it has been proven that there is a limit to the types of computation our ``classical computers", what we today consider general purpose computers, can perform \cite{linz}.
+In the last few decades however, the field of quantum mechanics and quantum computing have advanced to the point where primitive operations are now possible in the quantum sphere.
+Just this year Google claimed to acheive ``quantum supremacy" in an experiment in which they performed a computation, using a quantum computer, in under five minutes. 
+Google estimated that the same computation would take a state-of-the-art super computer 10,000 years to complete \cite{quantum_supremacy}. 
+While quantum computers are not general purpose, they can perform np-hard and exponentially complex problems in polynomial time or better \cite{TODO}.
+This breakthrough in computability will change the way information is stored, secured, and created.
+
+
+% State the problem
+Currently, encryption requires protocols to ensure data is properly encrypted and identities are trusted.
+One such protocol is the the widly adopted Diffe-Hellman protocol, which relies on the historic difficulty of factoring prime numbers for security \cite{qc:agi}.
+The protocol works by using a public key which is distributed and publically accessable.
+A person also has a private key which is used to decrypt data.
+Data can be encrypted against a public key, and then only decrypted with the corresponding private key.
+A person's public key is mathematically related to their private key, but the private key cannot be derived from the public key due to the exponential computational complexity of factoring large prime numbers using a classical computer.
+Quantum computers however, are able to factor large prime numbers in polynomial time complexity \cite{doi:10.1137/S0036144598347011}.
+This development, combined with the growing power of quantum computers, gives rise to security concerns to the Diffe-Hellman protocol in the future.
+
+% Mention the solution
 One such development was the BB84 quantum key distribution protocol.
-
 There are many encryption protocols in use today, such as the Diffe-Hellman key exchange protocol (KEP), each of which provide their own various security measures.
-The BB84 protocol allows two parties to co-generate an encryption key that can be used as a one-time-pad and discarded after use.
-Throughout the process of key generation, the protocol gives a number of guarantees regarding eavesdropping and malicious acts to both parties \cite{qcftgu}.
-This thesis presents a Python library that supports a peer to peer simulation of the BB84 quantum Quantum KEP, as well as serves as an intruduction to programming in the quantum computing paradigm.
+The BB84 protocol allows two parties to co-generate a disposable encryption key which can be used once to encrypt then decrypt data, and be discarded after use.
+This type of key is known as a one-time-pad, and it gets its security from being disposable; data patterns are harder to identify the fewer times data is encrypted using a key \cite{TODO}.
+The BB84 protocol allows for detection of an eavesdropper durring key generation, allowing both parties to abort the key generation process before any encrypted messages are transmitted \cite{qcftgu}.
+This thesis presents a peer to peer simulation of the BB84 quantum quantum KEP, and serves as an introduction to programming in the quantum computing paradigm using simulaqron, a quantum network simulator \cite{simulaqron}.
 
+% Describe the thesis' coontribution to the problem
+
+% Describe the thesis content
 
 Chapter~\ref{chap:background} of the thesis provides background information on encryption protocols, the quantum computation paradigm, and other background information related to the BB84 protocol. 
 
