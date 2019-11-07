@@ -17,11 +17,16 @@ jobs:
         response: "Hello! Thank you for your interest in our project.\nWe use github for visibility, but our issue tracking is done using sourcehut.\nUntil we have it setup to mirror issues to sourcehut, if you could take the time to re-submit the issue there we will be able to repsond to your issue sooner.\nThanks!"
         author: ${{ github.event.issue.user.login }}
 
-  email:
+  mirror:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: "hecateapp/dispatch-action@v1.0.1"
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        EMAILS: "andrew.thorp.dev@gmail.com"
+    - uses: athorp96/sourcehut_issue_mirror@master
+      with:
+        title: ${{ github.event.issue.user.title }}
+        body: ${{ github.event.issue.user.body }}
+        submitter: ${{ github.event.issue.user.user.login }}
+        tracker-owner: "~whereswaldon"
+        tracker-name: "github-action-replication-testing"
+        oauth_token: ${{ secrets.SRHT_OAUTH_TOKEN }}
+        
