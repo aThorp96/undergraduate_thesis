@@ -23,8 +23,8 @@ jobs:
     steps:
     - uses: athorp96/sourcehut_issue_mirror@master
       with:
-        title: ${{ github.event.issue.user.title }}
-        body: ${{ github.event.issue.user.body }}
+        title: ${{ github.event.issue.title }}
+        body: ${{ github.event.issue.body }}
         submitter: ${{ github.event.issue.user.user.login }}
         tracker-owner: "~whereswaldon"
         tracker-name: "github-action-replication-testing"
