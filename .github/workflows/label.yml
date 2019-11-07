@@ -25,7 +25,7 @@ jobs:
       with:
         title: ${{ github.event.issue.title }}
         body: ${{ github.event.issue.body }}
-        submitter: ${{ github.event.issue.user.user.login }}
+        submitter: ${{ github.event.issue.user.login }}
         tracker-owner: "~whereswaldon"
         tracker-name: "github-action-replication-testing"
         oauth-token: ${{ secrets.SRHT_OAUTH_TOKEN }}
