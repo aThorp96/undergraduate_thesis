@@ -78,7 +78,7 @@ That is to say if a $\ket{\psi} = \ket{+}$ or $\ket{\psi} = \ket{-}$ then it wil
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.25]{images/orthonormal_basis.png}
-\caption{A state vector with the Hadamard and standard bases in the 2D state space}
+\caption{A state vector with the Hadamard and standard bases in as 2D state space}
 \label{}
 \end{figure}
 
@@ -91,5 +91,6 @@ Another crucial property of qubits is that they cannot be cloned.
 It is impossible to have an operator that clones the state of an input qubit into an output qubit.
 This property proves crucial in the BB84 protocol, as explained in Chapter~\ref{chap:bb84}.
 
-\subsection{Quantum Cryptography}
-
+Using these properties and others, it has been shown that quantum computers can factor large prime numbers in order $\sqrt{N}$ time.
+With this in mind, and the growing power of quantum computers, the securities of the Diffie-Hellman and asymmetric encryption are threatened.
+The BB84 protocol is a quantum key distribution (QKD) protocol that allows two parties to co-create a shared key, using a verifiably secure channel, that can then be used to symmetrically encrypt messages.
