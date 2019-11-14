@@ -1,4 +1,4 @@
-\underline{}\documentclass[11pt]{asu}
+\documentclass[11pt]{asu}
 
 \usepackage[]{graphics}
 \usepackage{graphicx}
@@ -11,6 +11,7 @@
 \usepackage{csquotes}
 \usepackage{fixltx2e}
 \usepackage{xinttools}
+\usepackage{physics}
 \usepackage[]{algorithm2e}
 \usepackage[toc,page]{appendix}
 
@@ -20,7 +21,6 @@
 \widowpenalty=5000
 \renewcommand\lstlistlistingname{List of Listings}
 \setlength{\belowcaptionskip}{.25in}
-
 
 %inline code command, using courier font
 \newcommand{\code}[1]{\texttt{#1}}
@@ -41,11 +41,11 @@
 	\begin{preliminary}
 		\maketitle
         \makecopyright
-        %\input{01_abstract.tex}
+        \input{01_abstract.tex}
 		\tableofcontents
-        %\listoftables
-        %\listoffigures
-        %\lstlistoflistings
+        \listoftables
+        \listoffigures
+        \lstlistoflistings
 	\end{preliminary}
 
 	\newlinestretch{2}

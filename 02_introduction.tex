@@ -7,36 +7,37 @@ While this is an understandable conclusion, it has been proven that there is a l
 In the last few decades however, the field of quantum mechanics and quantum computing have advanced to the point where primitive operations are now possible in the quantum sphere.
 Just this year Google claimed to achieve ``quantum supremacy" in an experiment in which they performed a computation, using a quantum computer, in under five minutes. 
 Google estimated that the same computation would take a state-of-the-art super computer 10,000 years to complete \cite{quantum_supremacy}. 
-While quantum computers are not general purpose, they offer an exponential speedup in the computation complexity of many NP-Hard problems \cite{Grover:1996:FQM:237814.237866}.
+While quantum computers are not general purpose, they can solve NP-Hard and exponentially complex problems in polynomial time or better \cite{MikeAndIke}.
 This breakthrough in computability will change the way information is stored, secured, and created.
 
 % State the problem
-Currently, encryption protocols ensure the integrity of data and identities are trusted.
-One such protocol is the the widely adopted Diffe-Hellman protocol, which relies on the historic difficulty of factoring large prime numbers for security \cite{qc:agi}.
+Currently, encryption protocols ensure the integrity of data and identities.
+One such protocol is the the widely adopted Diffe-Hellman protocol, which is an asymmetric encryption protocol that relies on the historic difficulty of factoring large prime numbers for security \cite{qc:agi}.
 The protocol works by using a public and private key pair for each participating party.
-Data encrypted using a key (usually a public key) can then be decrypted using the private key.
-For example, a person's public and private keys are mathematically related to their private key, and it requires factoring large prime number to derive the private key from the public key, which is computationally infeasible with a classical computer.
+Data encrypted using one of the keys (usually a public key) can then only be decrypted using the private key.
+A person's public and private keys are mathematically related, but it requires factoring large prime numbers to derive the private key from the public key, which is computationally infeasible with a classical computer.
 Quantum computers however, are able to do this in only polynomial time complexity \cite{doi:10.1137/S0036144598347011}.
 This development, combined with the growing power of quantum computers, gives rise to security concerns to the Diffe-Hellman protocol in the future.
 
 % Mention the solution
 The BB84 is a quantum key distribution protocol which uses properties of quantum bits to address the growing security concerns of current key exchange protocols (KEP).
 The BB84 protocol allows two parties to co-generate a disposable, randomly generated, encryption key which can be used to encrypt and decrypt data, and then be discarded after use.
-This type of a use and encryption key is known as a one-time-pad, and it gets its security from being disposable and being used few times.
-Common data patterns are used to beak encryption keys by a malicious third party cannot be used due to the disposable nature of the one-time-pad apart from a brute-force approach that takes several years to crack \cite{TODO}.
-The BB84 protocol allows for detection of an eavesdropper during the key generation process, allowing both parties to abort key generation before any encrypted messages are transmitted \cite{qcftgu}.
+This type of a use and throw away encryption key is known as a one-time-pad, and it gets its security from being disposable.
+Common data patterns for breaking encryption keys by a malicious third party cannot be used due to the disposable nature of the one-time-pad \cite{cryptography}.
+The BB84 protocol allows for detection of an eavesdropper during the key generation process, allowing them to abort key generation before any encrypted messages are transmitted \cite{qcftgu}.
 
 % Describe the thesis' contribution to the problem
-This thesis presents a peer to peer simulation of the BB84 quantum KEP, and serves as an introduction to programming in the quantum computing paradigm using simulaqron and cqc, a quantum network simulator and messaging interface \cite{simulaqron}.
+This rest of the thesis presents a peer to peer simulation of the BB84 quantum KEP, and serves as an introduction to programming in the quantum computing paradigm using simulaqron and cqc, a quantum network simulator and messaging interface \cite{simulaqron}.
 We show that the BB84s security guarantees hold true in the simulated environment.
 The simulation allows two parties to co-generate an encryption key and begin exchanging encrypted information using that key.
 Both parties can simultaneously detect if a third party tried to eavesdrop on the key generation, allowing the users to abort the process. 
 
 % Describe the thesis content
 The thesis is organized as follows.
-Chapter~\ref{chap:background} of the thesis provides background information on encryption protocols, the quantum computation paradigm, and other background information related to the BB84 protocol. 
-Chapter~\ref{chap:bb84} details the BB84 protocol algorithm, as well as discusses the guarantees the protocol provides the user.
+Chapter~\ref{chap:background} provides background information on encryption protocols, the quantum computation paradigm, and other background information related to the BB84 protocol. 
+Chapter~\ref{chap:bb84} details the BB84 protocol algorithm, as well as discusses its theoretical guarantees.
 Chapter~\ref{chap:implementation} describes the simulaqron and cqc libraries, as well as the BB84 simulator.
-This describes the documentation for the libraries as well as how they can be used. This allows the chapter to serve as introductory material for someone getting into quantum simulation or programming in the paradigm.
-Chapter~\ref{chap:conclusion} summarizes this simulator and its potential applications, as well as discussing possible future work to improve upon it.
+This describes the documentation for the libraries as well as how they can be used.
+This allows the chapter to serve as introductory material for someone getting into quantum simulation or programming in the quantum paradigm.
+Chapter~\ref{chap:conclusion} summarizes this simulator and its potential applications, as well as discusses possible future work.
 
