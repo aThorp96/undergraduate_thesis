@@ -22,23 +22,22 @@ This development, combined with the growing power of quantum computers, gives ri
 % Mention the solution
 The BB84 is a quantum key distribution protocol which uses properties of quantum bits to address the growing security concerns of current key exchange protocols (KEP).
 The BB84 protocol allows two parties to co-generate a disposable, randomly generated, encryption key which can be used to encrypt and decrypt data, and then be discarded after use.
-This type of a use and throw away encryption key is known as a one-time-pad, and it gets its security from being disposable.
+This type of a use and throw encryption key is known as a one-time-pad, and it gets its security from being disposable.
 Common data patterns for breaking encryption keys by a malicious third party cannot be used due to the disposable nature of the one-time-pad.
-This technique is only susceptible to a brute force attach, which is always possible in principal but often infeasible \cite{cryptography}.
+This technique is only susceptible to a brute force attack, which is always possible in principal but often infeasible \cite{cryptography}.
 The BB84 protocol allows for detection of an eavesdropper during the key generation process, allowing them to abort key generation before any encrypted messages are transmitted \cite{qcftgu}.
 
 % Describe the thesis' contribution to the problem
-This rest of the thesis presents a peer to peer simulation of the BB84 quantum KEP, and serves as an introduction to programming in the quantum computing paradigm using simulaqron and cqc, a quantum network simulator and messaging interface \cite{simulaqron}.
+This thesis presents a peer to peer simulation of the BB84 quantum KEP, and serves as an introduction to programming in the quantum computing paradigm using simulaqron and cqc, a quantum network simulator and messaging interface \cite{simulaqron}.
 We show that the BB84s security guarantees hold true in the simulated environment.
 The simulation allows two parties to co-generate an encryption key and begin exchanging encrypted information using that key.
-Both parties can simultaneously detect if a third party tried to eavesdrop on the key generation, allowing the users to abort the process. 
+Both parties can simultaneously detect if a third party tried to eavesdrop on the key generation, allowing the users to abort the communication. 
 
 % Describe the thesis content
-The thesis is organized as follows.
+The rest of the thesis is organized as follows.
 Chapter~\ref{chap:background} provides background information on encryption protocols, the quantum computation paradigm, and other background information related to the BB84 protocol. 
 Chapter~\ref{chap:bb84} details the BB84 protocol algorithm, as well as discusses its theoretical guarantees.
 Chapter~\ref{chap:implementation} describes the simulaqron and cqc libraries, as well as the BB84 simulator.
-This describes the documentation for the libraries as well as how they can be used.
-This allows the chapter to serve as introductory material for someone getting into quantum simulation or programming in the quantum paradigm.
+This chapter also serves as introductory material for someone getting into quantum simulation or programming in the quantum paradigm.
 Chapter~\ref{chap:conclusion} summarizes this simulator and its potential applications, as well as discusses possible future work.
 
