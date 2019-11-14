@@ -24,7 +24,8 @@ This development, combined with the growing power of quantum computers, gives ri
 The BB84 is a quantum key distribution protocol which uses properties of quantum bits to address the growing security concerns of current key exchange protocols (KEP).
 The BB84 protocol allows two parties to co-generate a disposable, randomly generated, encryption key which can be used to encrypt and decrypt data, and then be discarded after use.
 This type of a use and throw away encryption key is known as a one-time-pad, and it gets its security from being disposable.
-Common data patterns for breaking encryption keys by a malicious third party cannot be used due to the disposable nature of the one-time-pad \cite{cryptography}.
+Common data patterns for breaking encryption keys by a malicious third party cannot be used due to the disposable nature of the one-time-pad.
+This technique is only susceptible to a brute force attach, which is always possible in principal but often infeasible \cite{cryptography}.
 The BB84 protocol allows for detection of an eavesdropper during the key generation process, allowing them to abort key generation before any encrypted messages are transmitted \cite{qcftgu}.
 
 % Describe the thesis' contribution to the problem

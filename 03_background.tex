@@ -67,22 +67,21 @@ Since after the H gate is applied $\alpha$ and $\beta$ both equal $\frac{1}{\sqr
 It is worth noting this is one way to create a true-random number generator.
 
 %	Bases
-Because the state vector exists in a 3D state space, we do not necessarily have to measure against $\ket{0}$ and $\ket{1}$, in fact we can measure against any two vector values that are opposite each other on the unit circle. 
+Because the state vector exists in a 3D state space, we do not necessarily have to measure against $\ket{0}$ and $\ket{1}$.
+In fact we can measure against any two vector values that are opposite each other on the unit circle. 
 A set of vectors to measure against is known as a basis, and there are many possible bases. 
 The set $\{\ket{0},\ket{1}\}$ is known as the standard basis or computational basis, as it is analogous to classical bits \cite{qcftgu}.
 Another common basis is the Hadamard Basis, which is denoted $\ket{+} = \frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}$ and $\ket{-} = \frac{1}{\sqrt{2}}\ket{0} - \frac{1}{\sqrt{2}}\ket{1}$.
 The H gate will put $\ket{0} \Rightarrow \ket{+}$ and $\ket{1} \Rightarrow \ket{-}$, but it will also revert the Hadamard basis into the standard basis: $\ket{+} \Rightarrow \ket{0}$ and $\ket{-} \Rightarrow \ket{1}$.
 Because the standard basis and the Hadamard basis are perpendicular to each other they are referred to as orthonormal bases.
-That is to say if a $\ket{\psi} = \ket{+}$ or $\ket{\psi} = \ket{-}$ then it will have 50\% of being $\ket{0}$ or $\ket{1}$ if measured in the standard basis, and vice-versa. 
-
+That is to say if a $\ket{\psi} = \ket{+}$ or $\ket{\psi} = \ket{-}$ then it will have a 50\% change of being $\ket{0}$ or $\ket{1}$ if measured in the standard basis, and vice-versa. 
 \begin{figure}[htp]
 \centering
 \includegraphics[scale=0.25]{images/orthonormal_basis.png}
 \caption{A state vector with the Hadamard and standard bases in as 2D state space}
 \label{}
 \end{figure}
-
-In effect if you have a vector in one orthonormal basis it is useless if measured in another orthonormal basis.
+In effect, if you have a vector in one orthonormal basis it is useless if measured in another orthonormal basis.
 Further, since the vector state changes when measured, if a value is encoded in one orthonormal basis, that information is destroyed by measuring in another orthonormal basis. 
 
 % Guarantees
