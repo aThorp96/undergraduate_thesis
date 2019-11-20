@@ -12,6 +12,10 @@
 \usepackage{fixltx2e}
 \usepackage{xinttools}
 \usepackage{physics}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{units}
+\usepackage{calc}
 \usepackage[]{algorithm2e}
 \usepackage[toc,page]{appendix}
 
@@ -21,6 +25,21 @@
 \widowpenalty=5000
 \renewcommand\lstlistlistingname{List of Listings}
 \setlength{\belowcaptionskip}{.25in}
+
+% define tag textSq for visualizing quantum gates
+\makeatletter
+\def\textSq#1{%
+\begingroup% make boxes and lengths local
+\setlength{\fboxsep}{0.3ex}% SET ANY DESIRED PADDING HERE
+\setbox1=\hbox{#1}% save the contents
+\setlength{\@tempdima}{\maxof{\wd1}{\ht1+\dp1}}% size of the box
+\setlength{\@tempdimb}{(\@tempdima-\ht1+\dp1)/2}% vertical raise
+\raise-\@tempdimb\hbox{\fbox{\vbox to \@tempdima{%
+  \vfil\hbox to \@tempdima{\hfil\copy1\hfil}\vfil}}}%
+\endgroup%
+}
+\def\Sq#1{\textSq{\ensuremath{#1}}}%
+\makeatother
 
 %inline code command, using courier font
 \newcommand{\code}[1]{\texttt{#1}}

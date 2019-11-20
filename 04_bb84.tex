@@ -1,3 +1,128 @@
-\chapter{The BB84 Protocol}
+\chapter{Quantum Key Distribution}
 \label{chap:bb84}
 
+% Talk about quantum key distribution
+Quantum computers have been shown to solve the mathematical problems that make our encryption secure.
+Although symmetric encryption is much less effected by this, it is not commonly used due to the key distribution problem \cite{cryptography}.
+One potential solution to this issue is the use of Quantum Key Distribution (QKD) which is the application of quantum mechanics and quantum computing properties in a key distribution protocol that is provably secure \cite{MikeAndIke}.
+It allows for two parties to securely generate a symmetric key.
+In this chapter, we look at the BB84 quantum key exchange protocol that uses principles of quantum mechanics to exchange encryption keys between two parties, Alice and Bob.
+The encryption key is exchanged through a quantum channel in the form of qubits.
+An eavesdropper listening in on this communication cannot obtain any information without disturbing the qubits and measuring them, which introduces noise to the signal since the basis is unknown. 
+This means the security of the BB84 protocol comes from the fundamental laws of quantum physics \cite{MikeAndIke}.
+
+% Introduce protocol
+\section{The BB84 Protocol}
+
+\begin{figure}[htp]
+	\centering
+	\fbox{\begin{minipage}{41em}
+	\begin{center}
+		\textbf{BB84}
+	\end{center}
+	\begin{enumerate}
+	\item  Alice and Bob connect via quantum network simulator.
+    \item  Alice generates $N$ random bits, where $N \geq 3k$, $k$ = desired key size
+    \item  Alice encodes the bits into qubits, randomly choosing to encode using one of two orthonormal bases.
+    \item  Alice sends the qubits to Bob.
+    \item  Bob measures each qubit, choosing to use one of the two selected bases at random.
+    \item  Bob sends a bitvector of his chosen bases to Alice over a classical channel.
+    \item  Alice responds with a bitvector showing which of Bob's bases were correct.
+    \item  Alice and Bob discard all qubits that were measured in the wrong basis.
+    \item  Bob sends Alice some number of the measured values to ensure the key was received without any interference.
+    \item Alice responds with whether or not the exchanged values were correct.
+    \item If there were no errors in the compared bits, the bits that were exchanged are discarded by both parties, and the rest of the bits are used as the key.
+    \end{enumerate}
+	\end{minipage}}
+\caption{A formal definition of the BB84 Quantum Key Distribution Protocol}
+	\label{fig:BB84}
+\end{figure}
+
+In 1984 Charles Bennett and Gilles Brassard proposed the first quantum key distribution protocol, the BB84 \cite{qc:agi}.
+The protocol allows two parties communicating over a public classical channel, such as the internet, and a public quantum channel to securely generate a shared encryption key for symmetric encryption.
+
+To start the quantum key exchange, Alice randomly generates two bit sequences, $a$ and $b$, of length at least $N = 4l$ bits each, where $l$ is the intended key length. 
+Alice then encodes $a$ into a block of $N$ qubits, $\ket{\psi}$.
+This is done using two bases; in our case, the standard basis and Hadamard basis.
+The basis chosen for encoding each bit in $a$ is determined by the corresponding bit in $b$, with $b_i = \{0 or 1\}$ where $0 \Rightarrow$ standard basis and $1 \Rightarrow$ Hadamard basis.
+Thus, each qubit is in either the standard basis or the Hadamard basis, and is in one of four states shown in figure ~\ref{fig:possible_states}.
+\begin{figure}[htp]
+\centering
+\begin{tabular}{|c|c|c|}
+\hline
+$a_i$ & $b_i$ & $\ket{\psi_i}$ \\ \hline
+0 & 0 & $\ket{0}$ \\ \hline
+1 & 0 & $\ket{1}$ \\ \hline
+0 & 1 & $\ket{+}$ \\ \hline
+1 & 1 & $\ket{-}$ \\ \hline
+\end{tabular}
+\caption{The four possible states of a qubit in a BB84 encoded string}
+\label{fig:possible_states}
+\end{figure}
+Now Alice has the qubits encoding $a$, $\ket{\psi}$, the bases of which are determined by $b$.
+Alice sends each qubit to Bob using a public quantum channel.
+When Bob has received each qubit he can assemble the full qubit block $\ket{\psi}^\prime$.
+Assuming a perfect quantum channel and no eavesdropping, there should not be any disturbance or noise in the communication: $\ket{\psi} = \ket{\psi}^\prime$.
+Once Bob has received all qubits, he measures each qubit in $\ket{\psi}^\prime$ into a bit sequence $a^\prime$ by randomly choosing a basis of measurement for each bit.
+The bases chosen are stored in a bit sequence $b^\prime$.
+Bob then informs Alice that he has measured all the received qubits.
+Because there is a 50\% chance that Bob will choose an incorrect basis for measurement for each qubit, and a 50\% probability of measuring the correct value using the wrong basis, Bob has measured 75\% of the qubits correctly, on average (figure ~\ref{fig:possible_measurements_no_eve}).
+\begin{figure}[htp]
+	\centering
+	\begin{tabular}{|r|c|c|c|c|c|c|c|c|}
+		\hline
+		Encoded value  & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 \\ \hline
+		Encoded basis  & 0 & 0 & 1 & 1 & 0 & 0 & 1 & 1 \\ \hline
+		Measured basis  & 0 & 1 & 0 & 1 & 0 & 1 & 0 & 1 \\ \hline
+		Measured value & 0 & $\nicefrac{0}{1}$& $\nicefrac{0}{1}$ & 0 & 1 & $\nicefrac{0}{1}$ & $\nicefrac{0}{1}$ & 1\\
+		\hline
+	\end{tabular}
+	\caption{Exhaustive list of encoding and measurement of a single qubit between Alice and Bob}
+	\label{fig:possible_measurements_no_eve}
+\end{figure}
+While 75\% of the bits are measured correct on average, an average of 50\% are measured in the correct basis; those qubits are  guaranteed to be measured correctly.
+Note that Alice has ($a$, $b$) and Bob has($a^\prime$ $b^\prime$), but they each do not know the others $a$ and $a^\prime$.
+Alice and Bob now exchange the bases they each used, $b$ and $b^\prime$, respectively.
+Alice and Bob both discard every bit that was encoded and measured using different bases: bit $i$ is discarded from $a$ and $a^\prime$ if $b_i \neq b^\prime_k$.
+They store the remaining bits from $a$ and $a^\prime$ into a new bit sequence, $k$ and $k^\prime$, respectively.
+Alice and Bob now each have the same key, $k = k^\prime$.
+They each exchange some number of bits from $k$ to verify there was no error in their key generation.
+If the exchanged bits are identical, then Alice and Bob can confirm with high probability that there was no eavesdropper, and that they key is secure \cite{MikeAndIke}.
+They can now use the key for symmetrically encrypted communication, or even as a OTP.
+
+% Discuss eavesdropping
+If an eavesdropper, Eve, were to attempt to listen in on the conversation, not only would they not be able to gain any useful information from the qubits, since she does not know the basis at which the qubits are encoded, nor can she duplicate the qubits. 
+Therefore the only strategy she has is to perform a "man-in-the-middle" attack, in which Eve impersonates Bob to Alice and Alice to Bob \cite{qc:agi}.
+
+To eavesdrop on the communication, Eve listens on the quantum channel and waits for Alice to transmit qubits.
+As Alice sends Bob the qubits over the quantum channel Eve intercepts each qubit, forming her own qubit block $\ket{\psi}^\prime$.
+With the qubits now in Eve's possession, she can attempt to measure the qubits or clone them.
+However, as previously shown, this would introduce noise to the signal, since the bases are unknown.
+This reduces Bob's average correct measurement from 75\% to 62.5\%, leaving only 25\% of the qubits as measured in the same basis used during encoding.
+\begin{figure}[htp]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		% Table headers
+		\hline
+		$\textrm{Basis}_{Alice}$ & $\textrm{Basis}_{Eve}$ &$\textrm{Basis}_{Bob}$ & Percent Correct & In Final Key\\ \hline
+	%	Ab  Eb  Bb  c       a       
+    	0 & 0 & 0 & 100\% & 1 \\ \hline		
+    	0 & 0 & 1 &  50\% & 0 \\ \hline		
+    	0 & 1 & 0 &  50\% & 1 \\ \hline		
+    	0 & 1 & 1 &  50\% & 0 \\ \hline		
+    	1 & 0 & 0 &  50\% & 0 \\ \hline		
+    	1 & 0 & 1 &  50\% & 1 \\ \hline		
+    	1 & 1 & 0 &  50\% & 0 \\ \hline		
+    	1 & 1 & 1 & 100\% & 1 \\ \hline		
+	\end{tabular}
+	\caption{Exhaustive list of encoding and measurement of a single qubit between Alice and Bob with an eavesdropper}
+	\label{fig:possible_measurements_eve}
+\end{figure}
+As can be seen in figure~\ref{fig:possible_measurements_eve}, when there is an eavesdropper, half of the bits kept in the generated key are measured in an incorrect basis by at least one party.
+This means, on average, 25\% of the bits in $k^\prime$ are incorrect.
+When Alice and Bob exchange bits from $k$ to verify their correctness, even if only four bits are compared they both will, on average, detect that the qubits were maliciously measured during transmission, at which point Alice and Bob will abort communication \cite{MikeAndIke}. 
+
+In practice this protocol can be implemented using polarized photons as qubits, which can be sent between Alice and Bob using fiber optics.
+The data is encoded into the photons using the angle of the polarization since polarization can act as a qubit \cite{qc:agi}.
+In this case the bases for encoding data are the standard basis, $(\ket{0}, \ket{1}) = (\ket{\rightarrow}, \ket{\uparrow})$, and the Hadamard basis, $(\ket{+}, \ket{-}) = (\ket{\nearrow}, \ket{\nwarrow})$.
+However all that is required to perform any QKD protocol is the ability to communicate qubits over a public channel with a very low error rate \cite{MikeAndIke}.
