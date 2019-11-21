@@ -92,13 +92,12 @@ They can now use the key for symmetrically encrypted communication, or even as a
 
 % Discuss eavesdropping
 If an eavesdropper, Eve, were to attempt to listen in on the conversation, not only would they not be able to gain any useful information from the qubits, since she does not know the basis at which the qubits are encoded, nor can she duplicate the qubits. 
-Therefore the only strategy she has is to perform a "man-in-the-middle" attack, in which Eve impersonates Bob to Alice and Alice to Bob \cite{qc:agi}.
+Therefore the only strategy she has is to perform a ``man-in-the-middle" attack, in which Eve impersonates Bob to Alice and Alice to Bob \cite{qc:agi}.
 
 To eavesdrop on the communication, Eve listens on the quantum channel and waits for Alice to transmit qubits.
 As Alice sends Bob the qubits over the quantum channel Eve intercepts each qubit, forming her own qubit block $\ket{\psi}^\prime$.
-With the qubits now in Eve's possession, she can attempt to measure the qubits or clone them.
-However, as previously shown, this would introduce noise to the signal, since the bases are unknown.
-This reduces Bob's average correct measurement from 75\% to 62.5\%, leaving only 25\% of the qubits as measured in the same basis used during encoding.
+With the qubits now in Eve's possession, she attempt to measure the qubits or clone them.
+However, as previously shown, this would introduce noise to the signal, reducing Bob's correct average measurement percentage from 75\% to 62.5\%, leaving only 25\% of the qubits measured in the same basis used during encoding.
 \begin{figure}[htp]
 	\centering
 	\begin{tabular}{|c|c|c|c|c|}
@@ -120,7 +119,7 @@ This reduces Bob's average correct measurement from 75\% to 62.5\%, leaving only
 \end{figure}
 As can be seen in figure~\ref{fig:possible_measurements_eve}, when there is an eavesdropper, half of the bits kept in the generated key are measured in an incorrect basis by at least one party.
 This means, on average, 25\% of the bits in $k^\prime$ are incorrect.
-When Alice and Bob exchange bits from $k$ to verify their correctness, even if only four bits are compared they both will, on average, detect that the qubits were maliciously measured during transmission, at which point Alice and Bob will abort communication \cite{MikeAndIke}. 
+When Alice and Bob exchange some bits to verify their correctness, even if only four bits are compared they both will, on average, detect that the qubits were maliciously measured during transmission, at which point Alice and Bob can abort communication \cite{MikeAndIke}. 
 
 In practice this protocol can be implemented using polarized photons as qubits, which can be sent between Alice and Bob using fiber optics.
 The data is encoded into the photons using the angle of the polarization since polarization can act as a qubit \cite{qc:agi}.

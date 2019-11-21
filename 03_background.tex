@@ -135,7 +135,8 @@ If $\ket{\psi}$ is a linear combination of $\ket{0}$ and $\ket{1}$, and neither 
 Superposition is one of the fundamental properties of quantum computation \cite{qc:agi}. 
 
 We use quantum operators called gates to manipulate $\alpha$ and $\beta$ probabilities.
-For example, the Hadamard Gate, or H gate, performs what is called a "quarter turn"; it maps $$\ket{\psi} = \ket{0} \rightarrow \textSq{H} \rightarrow \ket{\psi} = \frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}$$  $$\ket{\psi} = \ket{1} \rightarrow \textSq{H} \rightarrow \ket{\psi} = \frac{1}{\sqrt{2}}\ket{0} - \frac{1}{\sqrt{2}}\ket{1}$$ \cite{qc:agi}.
+For example, the Z gate inverts the qubit: $$\ket{\psi} = \ket{0} \rightarrow \textSq{Z} \rightarrow \ket{\psi} = \ket{1}$$ $$\ket{\psi} = \ket{1} \rightarrow \textSq{Z} \rightarrow \ket{\psi} = \ket{0}$$
+Similarly, the Hadamard Gate, or H gate, performs what is called a "quarter turn"; it maps $$\ket{\psi} = \ket{0} \rightarrow \textSq{H} \rightarrow \ket{\psi} = \frac{1}{\sqrt{2}}\ket{0} + \frac{1}{\sqrt{2}}\ket{1}$$  $$\ket{\psi} = \ket{1} \rightarrow \textSq{H} \rightarrow \ket{\psi} = \frac{1}{\sqrt{2}}\ket{0} - \frac{1}{\sqrt{2}}\ket{1}$$ \cite{qc:agi}.
 Since after the H gate is applied $\alpha$ and $\beta$ both equal $\frac{1}{\sqrt{2}}$, and ${(\frac{1}{\sqrt{2}})}^2 = \frac{1}{2}$, if we measure $\ket{\psi}$ in this state it would collapse to $\ket{0}$ and $\ket{1}$ with equal probability. 
 It is worth noting this is one way to create a true-random number generator.
 

@@ -7,6 +7,8 @@
 \usepackage{rotating}
 \usepackage{listings}
 \usepackage{url}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{soul}
 \usepackage{courier}
 \usepackage{csquotes}
 \usepackage{fixltx2e}
@@ -26,6 +28,20 @@
 \renewcommand\lstlistlistingname{List of Listings}
 \setlength{\belowcaptionskip}{.25in}
 
+\definecolor{myblue}{rgb}{0,0,0.6}
+\lstset{language=python,
+	numberstyle=\footnotesize,
+	basicstyle=\ttfamily\footnotesize,
+	commentstyle=\color{myblue},
+	morekeywords={with, as},
+	numbers=left,
+	stepnumber=1,
+	frame=single,
+	breaklines=true,
+  showstringspaces=false
+}
+
+
 % define tag textSq for visualizing quantum gates
 \makeatletter
 \def\textSq#1{%
@@ -42,7 +58,8 @@
 \makeatother
 
 %inline code command, using courier font
-\newcommand{\code}[1]{\texttt{#1}}
+\definecolor{light-gray}{gray}{0.90}
+\newcommand{\code}[1]{\texttt{\sethlcolor{light-gray}\hl{#1}}}
 
 \title{A Simulation of the BB84 Quantum Key Exchange Protocol}
 \degree{Bachelor of Science}
