@@ -1,3 +1,4 @@
+
 \documentclass[11pt]{asu}
 
 \usepackage[]{graphics}
@@ -15,6 +16,7 @@
 \usepackage{xinttools}
 \usepackage{physics}
 \usepackage{multirow}
+\usepackage{verbatim}
 \usepackage{float}
 \usepackage{units}
 \usepackage{calc}
@@ -59,7 +61,8 @@
 
 %inline code command, using courier font
 \definecolor{light-gray}{gray}{0.90}
-\newcommand{\code}[1]{\texttt{\sethlcolor{light-gray}\hl{#1}}}
+\newcommand{\plaintext}[1]{\texttt{#1}}
+\newcommand{\code}[1]{\begin{verbatim}[#1]\end{verbatim}}
 
 \title{A Simulation of the BB84 Quantum Key Exchange Protocol}
 \degree{Bachelor of Science}
@@ -69,7 +72,7 @@
 \author{Andrew Thorp}  
 \thesischair{Raghuveer Mohan, Ph.D.}
 \thesismemberone{Chad Waters, M.Sc.}
-\thesismembertwo{TBD}
+\thesismembertwo{Raghuveer Mohan, Ph.D.}
 \deptchair{Rahman Tashakkori, Ph.D.}
 \dean{Dean}
 
@@ -77,9 +80,10 @@
 	\begin{preliminary}
 		\maketitle
         \makecopyright
+        \input{0x_acknowledgements.tex}
         \input{01_abstract.tex}
 		\tableofcontents
-        \listoftables
+        %\listoftables
         \listoffigures
         \lstlistoflistings
 	\end{preliminary}

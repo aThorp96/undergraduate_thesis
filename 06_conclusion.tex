@@ -1,6 +1,27 @@
 \chapter{Conclusion}
 \label{chap:conclusion}
 
-\section{Future Work}
 \section{Summary}
+The BB84 protocol is nothing new, however as quantum computers become more powerful and QPUs become more accessible, the ability to program in the quantum paradigm is becoming more important.
+Using the BB84 as an example we have shown that the BB84 works not only in theory but in practice.
+The BB84 library is an empirical example of the availability and simplicity of today's quantum computation libraries power and accessibility.
+BBchat can be used a secure chat client, and functions as an example for how one might integrate a QKD protocol into their own software.
 
+Though there is still much development to be done in the quantum paradigm, such as true-quantum networking, there have already been great strides in the accessibility of quantum computation for computer programmers.
+
+\section{Future Work}
+The BBChat messenger works between two local clients and a locally running simulaqron server.
+Although this works well for a proof of concept, a crucial element to distribute the software is configuring remote support for messaging. 
+Allowing someone the ability to specify the url of both the server and the message recipient.
+Along these same lines, the messenger TUI could be re-arranged to make it more user friendly.
+
+Currently the program only supports the BB84 protocol, but there are several QKD protocols that could be used.
+One such protocol is the B92, which is comparable to the BB84, but is designed differently. 
+Unlike the BB84, which encodes qubits using randomly selected basis, the B92 encodes each bit in the key using only two states, depending on the value of that bit: $0 \rightarrow \ket{0}$ and $1 \rightarrow \ket{+}$ \cite{qc:agi}.
+As potential future work, one could simulate the B92 quantum protocol using the same libraries.
+
+Finally, since simulaqron does not currently support a true QPU backend, it would be important to create one \cite{simulaqron}.
+Doing so could verify the BB84 further, allowing further research into parameter adjustment to account for noise and the true-randomness of quantum computers. 
+This would be non-trivial, since current QPUs do not support persistent qubits.
+One idea however, would be to enqueue all quantum gates as they are called, and dequeue all enqueued gates upon measurement, calling the QPU API to perform each operation as it is dequeued, and returning the final measurement after all gates have been executed.
+Using this technique, the QPU does not have to store any information about the state of a qubit, as the qubit does not truly exist until it is measured.

@@ -1,4 +1,4 @@
-for _ in range(length):
+for _ in range(N):
     # Receive qubits from Alice
     qubit = conn.recvQubit()
     # Forward qubits to Bob
